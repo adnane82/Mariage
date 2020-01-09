@@ -1,0 +1,41 @@
+﻿﻿<nav class=" navbar navbar-expand-md navbar-dark bg-dark">
+  <a style="margin-top:-10px;color:pink;
+font-family:'essai';font-size:2.25rem;font-weight:bolder" class="navbar-brand"
+    href="#"><i class="fa fa-heart" aria-hidden="true"></i>Mariage<i class="fa fa-heart" aria-hidden="true"></i></a>
+
+  <ul style="letter-spacing:1px;font-weight:bold;font-family:'essai';font-size:1.2rem" class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Acceuil </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Recherche</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Contact</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Disscussion</a>
+    </li>
+    <li class="nav-item">
+      <a  *ngIf="loggedIn()" class="nav-link" (click)="loggedOut()">Déconnexion</a>
+    </li>
+  </ul>
+  <div class="dropdown">
+    <a *ngIf="loggedIn()" style="letter-spacing:1px;font-weight:bold;font-family:'essai';font-size:1.2rem"  class="dropdown-toggle text-light nav-link">
+      Bienvenue 
+    </a>
+  
+    <div class="dropdown-menu" >
+      <a class="dropdown-item" ><i class="fa fa-user-o" aria-hidden="true"></i> Dossier personnel</a>
+      <div class="dropdown diveder"></div>
+      <a class="dropdown-item" ><i class="fa fa-sign-out" aria-hidden="true"></i>Deconnexion</a>
+
+    </div>
+  </div>
+  <form *ngIf="!loggedIn()" (ngSubmit)="login()" #loginForm="ngForm" class="form-inline my-2 my-lg-0">
+    <input  name="username" required class="form-control mr-sm-2" type="text" [(ngModel)]="model.username" placeholder="Non de l'utilisateur">
+    <input  name="password" required class="form-control mr-sm-2" type="password" [(ngModel)]="model.password" placeholder="Mot de passe">
+    <button [disabled]="!loginForm.valid" style="font-weight:bold;font-family:'essai';font-size:1.0rem" class="btn btn-secondary my-2 my-sm-0" type="submit">Connexion</button>
+  </form>
+﻿</nav> 
+

@@ -1,0 +1,14 @@
+.nav-link:hover, .nav-link:focus {
+  text-decoration: none;
+  color: pink !important;
+}
+
+.nav-link {
+color:white !important;
+}
+
+.btn-secondary:hover {
+  text-decoration: none;
+  color: black !important;
+  background:pink !important
+    }
