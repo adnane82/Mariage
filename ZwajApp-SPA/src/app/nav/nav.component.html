@@ -1,20 +1,20 @@
 ﻿﻿<nav class=" navbar navbar-expand-md navbar-dark bg-primary">
   <a style="margin-top:-10px;color:pink;
 font-family:'essai';font-size:2.25rem;font-weight:bolder" class="navbar-brand"
-    href="#"><i class="fa fa-heart" aria-hidden="true"></i>Mariage<i class="fa fa-heart" aria-hidden="true"></i></a>
+   [routerLink]="['']"  ><i class="fa fa-heart" aria-hidden="true"></i>Mariage<i class="fa fa-heart" aria-hidden="true"></i></a>
 
   <ul *ngIf="loggedIn()" style="letter-spacing:1px;font-weight:bold;font-family:'essai';font-size:1.2rem" class="navbar-nav mr-auto">
     <li class="nav-item">
-      <a class="nav-link" href="#">Acceuil </a>
+      <a class="nav-link" [routerLink]="['']" >Acceuil </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Recherche</a>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="['/members']"  >Recherche</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Contact</a>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="['/lists']"  >Contact</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Disscussion</a>
+    <li class="nav-item" routerLinkActive="active" >
+      <a class="nav-link" [routerLink]="['/messages']" >Disscussion</a>
     </li>
    
   </ul>
