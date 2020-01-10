@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { error } from 'protractor';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-nav',
@@ -9,26 +10,26 @@ import { error } from 'protractor';
 })
 export class NavComponent implements OnInit {
   model :any={};
-  constructor( private authService: AuthService) { }
+  constructor( public authService: AuthService, private alertify:AlertifyService) { }
 
   ngOnInit() {
   }
   login(){
 
     this.authService.login(this.model).subscribe(
-      next=>{console.log('connexion réussi')},
-      error=>{console.log(error)}
+      next=>{this.alertify.success('connexion réussi')},
+      error=>{this.alertify.error('pas autorisé')}
     )
   }
   loggedIn(){
 
-    const token = localStorage.getItem('token');
-    return !! token 
+    
+    return this.authService.loggedIn();
   }
   loggedOut(){
 
     localStorage.removeItem('token');
-    console.log("vous etes déconnecter")
+    this.alertify.message("vous etes déconnecter")
   }
 
 }
