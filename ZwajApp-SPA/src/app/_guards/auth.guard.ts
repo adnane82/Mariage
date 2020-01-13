@@ -9,13 +9,14 @@ import { AlertifyService } from '../_services/alertify.service';
 })
 export class AuthGuard implements CanActivate {
  
-  constructor( private authservice:AuthService,private router:Router,private alertify:AlertifyService) {}
-  canActivate():boolean {
+  constructor(private authservice:AuthService,private router:Router,private alertify:AlertifyService) {}
+  canActivate():  boolean {
     if(this.authservice.loggedIn()){
       return true;
     }
-    this.alertify.error("Vous devez vous inscrire");
-   this.router.navigate(['']);
-   return false;
+    this.alertify.error('Vous devez vous connecter tout d\'abord  ');
+    this.router.navigate(['']);
+    return false;
+   
   }
 }

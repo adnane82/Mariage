@@ -9,10 +9,10 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-jwtHelper=new JwtHelperService();
+    jwtHelper=new JwtHelperService();
 
     baseUrl =environment.apiUrl+'auth/';  
-  decodedToken :any;
+    decodedToken :any;
 
 constructor( private http:HttpClient) { }
 login(model: any) {

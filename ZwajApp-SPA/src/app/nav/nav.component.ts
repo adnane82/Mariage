@@ -32,7 +32,7 @@ export class NavComponent implements OnInit {
 
     localStorage.removeItem('token');
     this.alertify.message("vous etes déconnecter");
-    this.router.navigate(['/home']);
+    this.router.navigate(['']);
   }
 
 }
