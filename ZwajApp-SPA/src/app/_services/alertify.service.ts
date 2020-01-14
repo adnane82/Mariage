@@ -59,22 +59,26 @@ export class AlertifyService {
       ok: 'ajs-ok',
       // class name attached to cancel button 
       cancel: 'ajs-cancel'
-    }
+    },
+    hooks:{
+      preinit:function(){},
+      postinit:function(){}
+  }
   }
 
   constructor() { }
-  //confirm(message: string, okCallback: () => any):any {
-    //alertify.confirm(message, function (e) {
-     // if (e) { okCallback() } else { }
-   // });
- // }
-   confirm(message: string, okCallback: () => any, cancelCallback: () => any) {
-     alertify.confirm(message, function (e) {
-       if (e) { okCallback() } else { }
-     }, function (e) {
-       if (e) { cancelCallback() } else { }
-     });
-   }
+  confirm(message: string, okCallback: () => any):any {
+    alertify.confirm(message, function (e:any) {
+      if (e) { okCallback() } else { }
+    });
+  }
+   //confirm(message: string, okCallback: () => any, cancelCallback: () => any) {
+     //alertify.confirm(message, function (e) {
+       //if (e) { okCallback() } else { }
+     //}, function (e) {
+       //if (e) { cancelCallback() } else { }
+     //});
+  // }
   success(message: string) {
     alertify.success(message);
   }
@@ -108,7 +112,7 @@ export class AlertifyService {
   
 }
 
-//////////////////////////
+
 
 export enum ConfirmResult {
   Ok = 1,

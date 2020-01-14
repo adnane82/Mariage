@@ -14,7 +14,7 @@ export class MemberEditResolver implements Resolve<User>{
         return this.userService.getUser(this.authService.decodedToken.nameid).pipe(
           catchError(error => {
               this.alertify.error('Oups!!Problème de chargement des données');
-              this.router.navigate(['/members']);
+              this.router.navigate(['/member']);
               return of(null);
 
           })  

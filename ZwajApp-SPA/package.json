@@ -22,7 +22,7 @@
     "@angular/router": "^6.0.3",
     "@auth0/angular-jwt": "^2.0.0",
     "alertifyjs": "^1.11.2",
-    "bootstrap-v4-rtl": "^4.1.1-0",
+    
 
     
     "bootstrap": "^4.3.1",
