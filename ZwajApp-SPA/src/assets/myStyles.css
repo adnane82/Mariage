@@ -54,7 +54,7 @@
   font-size:1.2rem;
   vertical-align: middle;
  
-  text-align: right;
+  text-align: left;
   border-radius: 3px 3px 0 0/23px 23px 0 0;
   
 }
@@ -87,7 +87,7 @@
 
 
 .ajs-header{
-  text-align: right !important;
+  text-align: left !important;
   border-bottom: 4px solid #E95420 !important;
   background-color: #333 !important;
   color:#fff !important;
@@ -98,7 +98,7 @@
   font-size:1.2rem !important;
 }
 .ajs-content{
-  text-align: right !important;
+  text-align: left !important;
   color:#333 !important;
   vertical-align: middle !important;
   font-weight:bolder !important;

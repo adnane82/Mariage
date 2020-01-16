@@ -43,11 +43,11 @@ export class AlertifyService {
     // language resources 
     glossary: {
       // dialogs default title
-      title: 'موقع زواج',
+      title: 'Site pour mariage ',
       // ok button text
-      ok: 'نعم',
+      ok: 'Oui',
       // cancel button text
-      cancel: 'لا',
+      cancel: 'Annuler',
 
     },
 
