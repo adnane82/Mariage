@@ -33,7 +33,7 @@ font-family:'essai';font-size:2.25rem;font-weight:bolder" class="navbar-brand"
     </div>
   </div>
   <span *ngIf="loggedIn()" >
-    <img src="{{photoUrl}}">
+    <img src="{{photoUrl || 'assets/User.png'}}">
     </span>
   <form *ngIf="!loggedIn()" (ngSubmit)="login()" #loginForm="ngForm" class=" ml-5 form-inline my-2 my-lg-0">
     <input  name="username" required class="form-control mr-sm-2" type="text" [(ngModel)]="model.username" placeholder="Non de l'utilisateur">

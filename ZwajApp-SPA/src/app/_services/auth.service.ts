@@ -11,47 +11,48 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
-    jwtHelper=new JwtHelperService();
+  jwtHelper = new JwtHelperService();
 
-    baseUrl =environment.apiUrl+'auth/';  
-    decodedToken :any;
-    currentUser:User;
-    photoUrl = new BehaviorSubject<string> ('../../assets/Koala.jpg');
-    currentPhotoUrl = this.photoUrl.asObservable();
+  baseUrl = environment.apiUrl + 'auth/';
+  decodedToken: any;
+  currentUser: User;
+  photoUrl = new BehaviorSubject<string>('../../assets/Koala.jpg');
+  currentPhotoUrl = this.photoUrl.asObservable();
 
-constructor( private http:HttpClient) { }
-changeMemberPhoto(newPhotoUrl){
+  constructor(private http: HttpClient) { }
+  changeMemberPhoto(newPhotoUrl) {
 
-  this.photoUrl.next(newPhotoUrl);
-}
-login(model: any) {
-  return this.http.post(this.baseUrl + 'login', model).pipe(
-    map((response: any) => {
-      const user = response;
-      if (user) {
-         localStorage.setItem('user',JSON.stringify(user.user))
-         localStorage.setItem('token', user.token);
-      this.decodedToken=this.jwtHelper.decodeToken(user.token);
-      this.currentUser=user.user;
-      this.changeMemberPhoto(this.currentUser.photoURL);
-   
-     } }))
-}
-register(model:any){
-  return this.http.post(this.baseUrl + 'register', model);
+    this.photoUrl.next(newPhotoUrl);
+  }
+  login(model: any) {
+    return this.http.post(this.baseUrl + 'login', model).pipe(
+      map((response: any) => {
+        const user = response;
+        if (user) {
+          localStorage.setItem('user', JSON.stringify(user.user))
+          localStorage.setItem('token', user.token);
+          this.decodedToken = this.jwtHelper.decodeToken(user.token);
+          this.currentUser = user.user;
+          this.changeMemberPhoto(this.currentUser.photoURL);
 
-}
-loggedIn(){
-try{
+        }
+      }))
+  }
+  register(user: User) {
+    return this.http.post(this.baseUrl + 'register', user);
 
-  const token = localStorage.getItem('token');
-  return !this.jwtHelper.isTokenExpired(token);
-}
-catch {
-return false;
-}
-  
+  }
+  loggedIn() {
+    try {
 
-}
+      const token = localStorage.getItem('token');
+      return !this.jwtHelper.isTokenExpired(token);
+    }
+    catch {
+      return false;
+    }
+
+
+  }
 
 }

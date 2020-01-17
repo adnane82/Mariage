@@ -62,6 +62,13 @@ export class PhotoEditorComponent implements OnInit {
           isMain: res.isMain
         };
         this.photos.push(photo);
+        if (photo.isMain) {
+
+          this.authService.changeMemberPhoto(photo.url);
+          this.authService.currentUser.photoURL = photo.url;
+          localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
+
+        }
       }
     }
 
@@ -70,7 +77,7 @@ export class PhotoEditorComponent implements OnInit {
 
     this.userService.SetMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe(
       () => {
-      this.currentMain = this.photos.filter(p => p.isMain === true)[0];
+        this.currentMain = this.photos.filter(p => p.isMain === true)[0];
         this.currentMain.isMain = false;
         photo.isMain = true;
         // this.getMemberPhotoChange.emit(photo.url);
@@ -87,14 +94,14 @@ export class PhotoEditorComponent implements OnInit {
 
     )
   }
-  delete(id:number){
-    this.alertify.confirm("es tu sur de voulour supprimer cette photo    ",()=>{
-      this.userService.deletePhoto(this.authService.decodedToken.nameid,id).subscribe(
-        ()=>{
-          this.photos.splice(this.photos.findIndex(p=>p.id===id),1);
+  delete(id: number) {
+    this.alertify.confirm("es tu sur de voulour supprimer cette photo    ", () => {
+      this.userService.deletePhoto(this.authService.decodedToken.nameid, id).subscribe(
+        () => {
+          this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
           this.alertify.success(" suppression réussi  ");
         },
-        error=>{this.alertify.error(" suppression échoué ");}
+        error => { this.alertify.error(" suppression échoué "); }
 
       );
     });
