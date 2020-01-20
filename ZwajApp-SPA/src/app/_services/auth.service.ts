@@ -16,7 +16,7 @@ export class AuthService {
   baseUrl = environment.apiUrl + 'auth/';
   decodedToken: any;
   currentUser: User;
-  photoUrl = new BehaviorSubject<string>('../../assets/Koala.jpg');
+  photoUrl = new BehaviorSubject<string>('../../assets/User.jpg');
   currentPhotoUrl = this.photoUrl.asObservable();
 
   constructor(private http: HttpClient) { }

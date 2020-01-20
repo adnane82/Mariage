@@ -5,6 +5,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions,NgxGalleryImage,NgxGalleryAnimation } from 'ngx-gallery';
 
+
 @Component({
   selector: 'app-member-detail',
   templateUrl: './member-detail.component.html',
@@ -12,6 +13,12 @@ import { NgxGalleryOptions,NgxGalleryImage,NgxGalleryAnimation } from 'ngx-galle
 })
 export class MemberDetailComponent implements OnInit {
  user : User;
+ created:string;
+ age : string;
+ showIntro : boolean=true;
+
+ showLook : boolean=true;
+ options = {weekday : 'long' , year :'numeric' , month : 'long',day:'numeric'};
  galleryOptions: NgxGalleryOptions[];
  galleryImages: NgxGalleryImage[];
   constructor(private userService: UserService,private alertify: AlertifyService, private route:ActivatedRoute) { }
@@ -26,6 +33,9 @@ export class MemberDetailComponent implements OnInit {
       imageAnimation:NgxGalleryAnimation.Slide,preview:false
     }]
     this.galleryImages=this.getImages();
+    this.created = new Date(this.user.created).toLocaleString('fr-FR',this.options);
+    this.showIntro=true;
+    this.showLook = true;
  
   }
   getImages(){

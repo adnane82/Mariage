@@ -6,19 +6,19 @@
         <div class="card-body">
           <div>
             <strong> Résidance </strong>
-            <p>{{user?.country}},{{user?.city}}</p>
+            <p>{{user.country}}---{{user?.city}}</p>
           </div>
           <div>
             <strong>Age </strong>
-            <p>{{user?.age}}</p>
+            <p>{{user.age}}</p>
           </div>
           <div>
             <strong>Dérnière activité </strong>
-            <p>{{user?.lastActive}}</p>
+            <p>{{user.lastActive | timeAgo}}</p>
           </div>
           <div>
             <strong> Inscrit depuis </strong>
-            <p>{{user?.created}}</p>
+            <p>{{created}}</p>
           </div>
         </div>
         <div class="card-footer">
@@ -34,12 +34,18 @@
         <tabset class="member-tabset">
           <tab heading="Moi {{user.knownAs}}">
 
+            <div class="card mt-4">
             <div class="card-header">
               <h4> Je me présente</h4>
             </div>
             <div class="card-text mt-3 p-2">
-              <p>{{user.introduction}}</p>
+              <p #intro>{{user.introduction | slice:0:200}}</p>
+              <button [hidden]='!showIntro' class="btn btn-primary" (click)="intro.innerText = user.introduction;showIntro=false;">Lire plus </button>
+              <button [hidden]='showIntro' class="btn btn-danger" (click)="intro.innerText = user.introduction.slice(0,200);showIntro=true;">Lire moins</button>
+
+
             </div>
+          </div>
 
 
             <div class="card mt-4">
@@ -47,7 +53,9 @@
                 <h4> Je sui à la recherche</h4>
               </div>
               <div class="card-text mt-3 p-2">
-                <p>{{user.lookingFor}}</p>
+                <p #look>{{user.lookingFor | slice:0:200}}</p>
+                <button [hidden]='!showLook' class="btn btn-primary" (click)="look.innerText = user.lookingFor;showLook=false;">Lire plus </button>
+                <button [hidden]='showLook' class="btn btn-danger" (click)="look.innerText = user.lookingFor.slice(0,200);showLook=true;">Lire moins</button>
               </div>
             </div>
 

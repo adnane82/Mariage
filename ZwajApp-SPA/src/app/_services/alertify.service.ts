@@ -47,7 +47,7 @@ export class AlertifyService {
       // ok button text
       ok: 'Oui',
       // cancel button text
-      cancel: 'Annuler',
+      cancel: 'Non',
 
     },
 

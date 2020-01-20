@@ -13,7 +13,10 @@ import { AuthService } from 'src/app/_services/auth.service';
 })
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm:NgForm
-user:User
+user:User;
+created:string;
+  age:string;
+  options = {weekday : 'long' , year :'numeric' , month : 'long',day:'numeric'};
 photoUrl:string;
 @HostListener('window:beforeunload',['$event'])
 unLoadNotification($event:any){
@@ -33,7 +36,10 @@ unLoadNotification($event:any){
     );
     this.authService.currentPhotoUrl.subscribe(
       photoUrl=>this.photoUrl=photoUrl
+      
     )
+    this.created = new Date(this.user.created).toLocaleString('fr-FR',this.options);
+    this.age = this.user.age.toLocaleString('fr-FR');
   }
   updateUser(){    
 

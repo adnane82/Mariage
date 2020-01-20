@@ -16,19 +16,19 @@
         <div class="card-body">
           <div>
             <strong> Résidance </strong>
-            <p>{{user?.country}},{{user?.city}}</p>
+            <p>{{user.country}},{{user.city}}</p>
           </div>
           <div>
             <strong>Age </strong>
-            <p>{{user?.age}}</p>
+            <p>{{user.age}}</p>
           </div>
           <div>
             <strong>Dérnière activité </strong>
-            <p>{{user?.lastActive}}</p>
+            <p>{{user.lastActive | timeAgo}}</p>
           </div>
           <div>
             <strong> Inscrit depuis </strong>
-            <p>{{user?.created}}</p>
+            <p>{{created}}</p>
           </div>
         </div>
         <div class="card-footer">
