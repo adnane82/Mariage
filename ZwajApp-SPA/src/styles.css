@@ -1,16 +1,14 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~bootswatch/dist/Sketchy/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
-@import"~alertifyjs/build/css/alertify.rtl.min.css";
-@import"~alertifyjs/build/css/themes/bootstrap.rtl.min.css";
+@import"~alertifyjs/build/css/alertify.min.css";
+@import"~alertifyjs/build/css/themes/bootstrap.min.css";
 @import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css";
 
 @import url("assets/myStyles.css");
 
 @font-face { font-family: "font essai2"; src: url("/assets/fonts/font2.ttf"); }
 @font-face { font-family: "font essai3"; src: url("/assets/fonts/font3.ttf"); }
-
-
 @font-face { font-family: "pricedown bl"; src: url("/assets/fonts/pricedown bl.ttf"); }
 @font-face { font-family: "essai"; src: url("/assets/fonts/essai.TTF"); }
 @font-face { font-family: "degrassi"; src: url("/assets/fonts/degrassi.ttf"); }
