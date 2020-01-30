@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using ZwajApp.API.Data;
 using ZwajApp.API.Dtos;
 using ZwajApp.API.Helpers;
-
+using ZwajApp.API.Models;
 
 namespace ZwajApp.API.Controllers
 {
@@ -63,6 +63,26 @@ namespace ZwajApp.API.Controllers
 
             throw new   Exception($"Il y'a eu des modifications  {id}");
 
+        }
+          [HttpPost("{id}/like/{recipientId}")]
+        public async Task<IActionResult> LikeUser(int id, int recipientId)
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            var like = await _repo.GetLike(id, recipientId);
+            if (like != null)
+                return BadRequest("Tu as déja liké ce membre");
+            if (await _repo.GetUser(recipientId) == null)
+                return NotFound();
+            like = new Like
+            {
+                LikerId = id,
+                LikeeId = recipientId
+            };
+            _repo.Add<Like>(like);
+            if (await _repo.SaveAll())
+                return Ok();
+            return BadRequest(" Like échoué ");
         }
 
     }

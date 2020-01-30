@@ -34,7 +34,7 @@
  border: none !important;
 }
 .ajs-button:active,.ajs-button:focus{
-    background:green !important;
+    background:red !important;
     border: none !important;
     text-decoration: none;
     color: white !important;

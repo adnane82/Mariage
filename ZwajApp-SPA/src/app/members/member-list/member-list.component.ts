@@ -12,6 +12,7 @@ import { Pagination, PaginationResult } from 'src/app/_models/Pagination';
 })
 export class MemberListComponent implements OnInit {
   users: User[];
+  // search:boolean=false;
   user:User = JSON.parse(localStorage.getItem('user'));
   genderList =[{value:'Homme',display:'Hommes'},{value:'Femme',display:'Femmes'}];
   userParams : any = {};
@@ -21,6 +22,7 @@ export class MemberListComponent implements OnInit {
 
   ngOnInit() {
    // this.loadUsers();
+  //  this.search=false;
    this.route.data.subscribe(data => {
     this.users = data['users'].result;
     this.pagination = data['users'].pagination
@@ -44,6 +46,9 @@ resetFilter(){
     this.loadUsers();
   }
    loadUsers() {
+    // if (!this.search) {
+    //   this.pagination.currentPage=1;
+    //    }
      this.userService.getUsers(this.pagination.currentPage,this.pagination.itemsPerPage,this.userParams).subscribe((res: PaginationResult<User[]>) => {
        this.users = res.result;
        this.pagination = res.pagination;
