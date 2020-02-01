@@ -12,6 +12,7 @@ export class AuthGuard implements CanActivate {
   constructor(private authservice:AuthService,private router:Router,private alertify:AlertifyService) {}
   canActivate():  boolean {
     if(this.authservice.loggedIn()){
+      this.authservice.hubConnection.stop();
       return true;
     }
     this.alertify.error('Vous devez vous connecter tout d\'abord  ');

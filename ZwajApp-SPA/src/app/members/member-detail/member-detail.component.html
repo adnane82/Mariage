@@ -24,14 +24,14 @@
         <div class="card-footer">
           <div class="btn-group d-flex">
             <button class="btn btn-primary w-100">Flash</button>
-            <button class="btn btn-primary ml-2 w-100">Tchat</button>
+            <button class="btn btn-primary ml-2 w-100"(click)="selectTab(3);" >Tchat</button>
           </div>
         </div>
       </div>
     </div>
     <div class="col-sm-8">
       <div class="tab-Panel">
-        <tabset class="member-tabset">
+        <tabset #memberTabs class="member-tabset">
           <tab heading="Moi {{user.knownAs}}">
 
             <div class="card mt-4">
@@ -82,9 +82,9 @@
             <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
           </tab>
 
-          <tab heading="Messages">
+          <tab heading="Messages" (deselect)="deselect();">
             <h4>Messages</h4>
-            <p>Messages </p>
+            <app-member-messages [recipientId]="user.id"></app-member-messages>
           </tab>
 
         </tabset>

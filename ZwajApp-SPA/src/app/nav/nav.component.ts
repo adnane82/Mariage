@@ -3,6 +3,8 @@ import { AuthService } from '../_services/auth.service';
 import { error } from 'protractor';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
+import { UserService } from '../_services/user.service';
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 
 @Component({
   selector: 'app-nav',
@@ -12,17 +14,37 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
   model :any={};
   photoUrl:string;
-  constructor( public authService: AuthService, private alertify:AlertifyService,private router:Router) { }
+  count:string;
+  hubConnection:HubConnection;
+  constructor( private userService :UserService    ,public authService: AuthService, private alertify:AlertifyService,private router:Router) { }
 
   ngOnInit() {
     this.authService.currentPhotoUrl.subscribe(
       photourl=>this.photoUrl=photourl
     );
+    this.userService.getUnreadCount(this.authService.decodedToken.nameid).subscribe(
+      res=>{this.authService.unreadCount.next(res.toString());
+      this.authService.latestUnreadCount.subscribe(res=>{this.count=res;});
+      });
+      this.hubConnection = new HubConnectionBuilder().withUrl("http://localhost:5000/chat").build();
+      this.hubConnection.start();
+      this.hubConnection.on('count', () => {
+        setTimeout(() => {
+              this.userService.getUnreadCount(this.authService.decodedToken.nameid).subscribe(res=>{
+                this.authService.unreadCount.next(res.toString());
+                this.authService.latestUnreadCount.subscribe(res=>{this.count=res;});
+                     });
+            }, 0);
+    });
   }
   login(){
 
     this.authService.login(this.model).subscribe(
-      next=>{this.alertify.success('connexion réussi')},
+      next=>{this.alertify.success('connexion réussi');  this.userService.getUnreadCount(this.authService.decodedToken.nameid).subscribe(res=>{
+        this.authService.unreadCount.next(res.toString());
+        this.authService.latestUnreadCount.subscribe(res=>{this.count=res;});
+    
+             });	 },
       error=>{this.alertify.error('pas autorisé')},
       ()=>{this.router.navigate(['/members']);}
     )

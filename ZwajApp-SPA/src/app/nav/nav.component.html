@@ -1,44 +1,52 @@
 ﻿﻿<nav class=" navbar navbar-expand-md navbar-dark bg-primary">
   <a style="margin-top:-10px;color:pink;
-font-family:'essai';font-size:2.25rem;font-weight:bolder" class="navbar-brand"
-   [routerLink]="['']"  ><i class="fa fa-heart" aria-hidden="true"></i>messtegmer<i class="fa fa-heart" aria-hidden="true"></i></a>
+font-family:'essai';font-size:2.25rem;font-weight:bolder" class="navbar-brand" [routerLink]="['']"><i
+      class="fa fa-heart" aria-hidden="true"></i>messtegmer<i class="fa fa-heart" aria-hidden="true"></i></a>
 
-  <ul *ngIf="loggedIn()" style="letter-spacing:1px;font-weight:bold;font-family:'essai';font-size:1.2rem" class="navbar-nav mr-auto">
+  <ul *ngIf="loggedIn()" style="letter-spacing:1px;font-weight:bold;font-family:'essai';font-size:1.2rem"
+    class="navbar-nav mr-auto">
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['']" >Acceuil </a>
+      <a class="nav-link" [routerLink]="['']">Acceuil </a>
     </li>
     <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [routerLink]="['/members']"  >Recherche</a>
+      <a class="nav-link" [routerLink]="['/members']">Recherche</a>
     </li>
     <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [routerLink]="['/lists']"  >Contact</a>
+      <a class="nav-link" [routerLink]="['/lists']">Contact</a>
     </li>
-    <li class="nav-item" routerLinkActive="active" >
-      <a class="nav-link" [routerLink]="['/messages']" >Disscussion</a>
+    <li class="nav-item" routerLinkActive="active">
+      <a lang class="nav-link notification" [routerLink]="['/messages']" routerLinkActive="active">Disscussion<span
+          *ngIf="count!=='0'" class="badge badge-warning"> {{count}} </span></a>
     </li>
-   
+
   </ul>
-  <div  *ngIf="loggedIn()"  dropdown   class="dropdown">
-    
-    <a dropdownToggle style="letter-spacing:1px;font-weight:bold;font-family:'essai';font-size:1.2rem"  class="dropdown-toggle text-light nav-link">
+  <div *ngIf="loggedIn()" dropdown class="dropdown">
+
+    <a dropdownToggle style="letter-spacing:1px;font-weight:bold;font-family:'essai';font-size:1.2rem"
+      class="dropdown-toggle text-light nav-link">
       Bienvenue {{authService.decodedToken?.unique_name |titlecase}}
     </a>
-  
-    <div *dropdownMenu class="dropdown-menu mt-2" >
-      <a class="dropdown-item mnav-link " [routerLink]="['/member/edit']"  ><i class="fa fa-user-o" aria-hidden="true"></i> Dossier personnel</a>
+
+    <div *dropdownMenu class="dropdown-menu mt-2">
+      <a class="dropdown-item mnav-link " [routerLink]="['/member/edit']"><i class="fa fa-user-o"
+          aria-hidden="true"></i> Dossier personnel</a>
       <div class="dropdown diveder"></div>
-      <a (click)="loggedOut()" class="dropdown-item mnav-link" ><i class="fa fa-sign-out" aria-hidden="true"></i>Deconnexion</a>
-     
+      <a (click)="loggedOut()" class="dropdown-item mnav-link"><i class="fa fa-sign-out"
+          aria-hidden="true"></i>Deconnexion</a>
+
 
     </div>
   </div>
-  <span *ngIf="loggedIn()" >
+  <span *ngIf="loggedIn()">
     <img src="{{photoUrl || 'assets/User.png'}}">
-    </span>
+  </span>
   <form *ngIf="!loggedIn()" (ngSubmit)="login()" #loginForm="ngForm" class=" ml-5 form-inline my-2 my-lg-0">
-    <input  name="username" required class="form-control mr-sm-2" type="text" [(ngModel)]="model.username" placeholder="Non de l'utilisateur">
-    <input  name="password" required class="form-control mr-sm-2" type="password" [(ngModel)]="model.password" placeholder="Mot de passe">
-    <button [disabled]="!loginForm.valid" style="font-weight:bold;font-family:'essai';font-size:1.0rem" class="btn btn-secondary my-2 my-sm-0" type="submit">Connexion</button>
+    <input name="username" required class="form-control mr-sm-2" type="text" [(ngModel)]="model.username"
+      placeholder="Non de l'utilisateur">
+    <input name="password" required class="form-control mr-sm-2" type="password" [(ngModel)]="model.password"
+      placeholder="Mot de passe">
+    <button [disabled]="!loginForm.valid" style="font-weight:bold;font-family:'essai';font-size:1.0rem"
+      class="btn btn-secondary my-2 my-sm-0" type="submit">Connexion</button>
   </form>
-﻿</nav> 
-
+  ﻿
+</nav>
