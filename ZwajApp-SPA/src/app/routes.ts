@@ -12,6 +12,9 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver ';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { ListResolver } from './_resolvers/lists.resolver';
 import { MessageResolver } from './_resolvers/message.resolver';
+import { PaymentComponent } from './payment/payment.component';
+import { ChargeGuard } from './_guards/charge.guard';
+import { MessagesGuard } from './_guards/messages.guard';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -31,7 +34,8 @@ export const appRoutes: Routes = [
            
             { path: 'lists', component: ListsComponent,resolve:{
                 users:ListResolver }},
-            { path: 'messages', component: MessagesComponent,resolve:{messages:MessageResolver} }
+                { path: 'messages', component: MessagesComponent,canActivate:[MessagesGuard] , resolve:{messages:MessageResolver} },
+                { path: 'charge', component: PaymentComponent ,canActivate:[ChargeGuard]},
         ]
     },
    

@@ -144,5 +144,11 @@ namespace ZwajApp.API.Data
             return count;
 
         }
+
+        public async  Task<Payment> GetPaymentForUser(int userId)
+        {
+                       return await _context.Payments.FirstOrDefaultAsync(p=>p.UserId==userId);
+
+        }
     }
 }

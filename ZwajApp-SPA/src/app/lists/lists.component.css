@@ -1,6 +1,6 @@
 :host /deep/ .pagination{
     font-size: 25px;
-    font-family: 'essai';
+    font-family: 'essai3';
     
 }
 :host /deep/ .page-item .page-link , input{
@@ -10,12 +10,12 @@
 }
 :host /deep/ label{
     font-size: 20px;
-    font-family: 'essai';
+    font-family: 'essai3';
     
 }
 :host /deep/ input , select , option{
     font-size: 18px;
-    font-family: 'essai';
+    font-family: 'essai3';
     
 }
 

@@ -1,12 +1,12 @@
 ﻿﻿<div class="container mt-1">
   <div class="row">
     <div class="col-md-11 text-center mt-3">
-      <h3 style="font-family:'essai';margin-right:145px">{{likeParam === 'Likers' ? 'Qui m a liké' : 'Qui j ai liké'}} : {{pagination.totalItems}}</h3>
+      <h3 style="font-family:'essai3';margin-right:145px">{{likeParam === 'Likers' ? 'Qui m a liké' : 'Qui j ai liké'}} : {{pagination.totalItems}}</h3>
     </div>
     <div class="col-md-1 float-right">
       <div class="btn-group-vertical">
         <button type="button" [(ngModel)]="likeParam" btnRadio="Likers" (click)="loadUsers();"  class="btn mb-1 ajs-button btn-up"
-          [ngStyle]="{'background':likeParam ==='Likers'?'red' : ''}">je leurs plais</button>
+        [ngStyle]="{'background':likeParam ==='Likers'?'red' : ''}">je leurs plais</button>
         <button type="button" [(ngModel)]="likeParam" (click)="loadUsers();" btnRadio="Likees"  class="btn ajs-button btn-down"
           [ngStyle]="{'background':likeParam ==='Likees'?'red' : ''}">Mes favoris</button>
       </div>

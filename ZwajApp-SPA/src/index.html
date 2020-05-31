@@ -10,5 +10,10 @@
 </head>
 <body>
   <app-root></app-root>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    var stripe = Stripe('pk_test_kg2mQ2EldHPQ4kOyUaQLMY2L00XDSiuwww');
+    var elements = stripe.elements();
+  </script>
 </body>
 </html>

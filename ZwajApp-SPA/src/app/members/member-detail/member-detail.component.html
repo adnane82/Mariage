@@ -64,7 +64,7 @@
 
 
 
-          <tab heading="Mes centres d'interet">
+          <tab class="tt" heading="Mes centres d'interet">
             <div class="card">
               <div class="card-header">
                 <h4>Mes centres d'interet</h4>
@@ -84,7 +84,8 @@
 
           <tab heading="Messages" (deselect)="deselect();">
             <h4>Messages</h4>
-            <app-member-messages [recipientId]="user.id"></app-member-messages>
+            <app-member-messages *ngIf="paid" [recipientId]="user.id"></app-member-messages>
+            <app-payment  *ngIf="!paid"  ></app-payment>
           </tab>
 
         </tabset>

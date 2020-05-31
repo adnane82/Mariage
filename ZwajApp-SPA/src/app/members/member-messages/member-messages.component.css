@@ -15,7 +15,7 @@
 
     margin-top: 5px;
     font-weight:bold;
-    font-family:'essai';
+    font-family:'essai3';
     font-size:1.2rem;
     border-bottom: 1px dotted #B3A9A9;
     
@@ -45,7 +45,7 @@
     padding-top: 4px;
    }
    small{
-    font-family:'essai' !important;
+    font-family:'essai3' !important;
     font-size:1rem !important;
     color: white !important;
    }
@@ -61,7 +61,7 @@
     text-decoration: none;
     letter-spacing:0.5px;
     font-weight:bold;
-    font-family:'essai';
+    font-family:'essai3';
     font-size:1rem;
     outline: none;
     

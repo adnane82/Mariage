@@ -17,6 +17,7 @@ export class AuthService {
   baseUrl = environment.apiUrl + 'auth/';
   decodedToken: any;
   currentUser: User;
+  paid:boolean=false;
   photoUrl = new BehaviorSubject<string>('../../assets/User.jpg');
   currentPhotoUrl = this.photoUrl.asObservable();
   unreadCount = new BehaviorSubject<string>('');
@@ -43,7 +44,7 @@ export class AuthService {
       }))
   }
   register(user: User) {
-    return this.http.post(this.baseUrl + 'register', user);
+    return this.http.post(this.baseUrl +'register', user);
 
   }
   loggedIn() {

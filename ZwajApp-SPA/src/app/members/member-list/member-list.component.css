@@ -1,6 +1,6 @@
 :host /deep/ .pagination{
     font-size: 25px;
-    font-family: 'essai';
+    font-family: 'essai3';
     
 }
 :host /deep/ .page-item .page-link , input{
@@ -10,12 +10,12 @@
 }
 :host /deep/ label{
     font-size: 20px;
-    font-family: 'essai';
+    font-family: 'essai3';
     
 }
 :host /deep/ input , select , option{
     font-size: 16px;
-    font-family: 'essai';
+    font-family: 'essai3';
     
 }
 
@@ -25,13 +25,17 @@
     background:pink !important;
    }
    .btn-up {
+   
     border-radius: 16px 16px 0 0/13px 17px 16px 16px !important; 
     border: none !important;
+  
     
 }
 .btn-down {
+
  border-radius: 0px 0px 16px 16px/16px 16px 16px 16px !important; 
  border: none !important;
+
 }
 .ajs-button:active,.ajs-button:focus{
     background:red !important;

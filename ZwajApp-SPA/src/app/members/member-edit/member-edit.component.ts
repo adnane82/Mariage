@@ -19,6 +19,7 @@ created:string;
   options = {weekday : 'long' , year :'numeric' , month : 'long',day:'numeric'};
 photoUrl:string;
 @HostListener('window:beforeunload',['$event'])
+
 unLoadNotification($event:any){
   if(this.editForm.dirty){
     $event.returnValue=true;
@@ -37,7 +38,7 @@ unLoadNotification($event:any){
     this.authService.currentPhotoUrl.subscribe(
       photoUrl=>this.photoUrl=photoUrl
       
-    )
+    );
     this.created = new Date(this.user.created).toLocaleString('fr-FR',this.options);
     this.age = this.user.age.toLocaleString('fr-FR');
   }
